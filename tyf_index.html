@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teach Youth First</title>
+    <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="tyf.png"/>
+    <link rel="canonical" href="https://teachyouthfirst"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+ 
+    <style>
+        :root {
+            --primary-color: #8e1516;
+            --secondary-color: #ffffff;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.0rem;
+            font-weight: bold;
+            z-index: 1001;
+            color: var(--primary-color)
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;         
+        }
+
+        .menu-items {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .menu-items a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 0.3rem;
+            font-size:1.2rem;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(rgba(142, 21, 22, 0.1), rgba(142, 21, 22, 0.1));
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+        }
+
+        .section-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .tab-btn {
+        padding: 0.8rem 2rem;
+        border: none;
+        background: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        border: 2px solid var(--primary-color);
+        font-weight: 500;
+    }
+
+    .tab-btn.active {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .profile-card {
+        display: none;
+        animation: fadeIn 0.5s ease;
+        background: white;
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        min-height: 500px;
+        margin: 0 auto;
+        max-width: 900px;
+    }
+
+    .profile-card h2 {
+        color: var(--primary-color);
+        margin-bottom: 2.2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .profile-card.active {
+        display: block;
+    }
+
+    .profile-section {
+        padding: 4rem 2rem;
+        background-color: #f9f9f9;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    .card-content i {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        display: block;
+    }
+
+    .card-content p {
+        color: #444;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /*Stats Container */
+    .stats-container {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 4rem;
+        margin: 3rem 0;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 0 1 rem;
+
+    }
+
+    .counter {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .stat-label {
+        display: block;
+        font-size: 1.1rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+
+    .progress-container {
+        margin: 3rem 0;
+        padding: 0 2rem;
+    }
+
+    .progress-item label {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .progress-bar {
+        background: #eee;
+        height: 25px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress {
+        background: var(--primary-color);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: width 1.5s ease;
+    }
+
+
+    .approach-steps {
+        margin: 2rem 0;
+    }
+
+    .step {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideIn 0.5s ease forwards;
+        padding: 0.6rem;
+        background: #f8f8f8;
+        border-radius: 10px;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .read-more-btn {
+        background: transparent;
+        border: none;
+        color: var(--primary-color);
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem; 
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        font-size: 1.3rem;
+    }
+
+    .read-more-btn:hover {
+        background: rgba(142, 21, 22, 0.1);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+     /* Add delay to each step */
+     .step:nth-child(1) { animation-delay: 0.2s; }
+    .step:nth-child(2) { animation-delay: 0.4s; }
+    .step:nth-child(3) { animation-delay: 0.6s; }
+
+    @media (max-width: 768px) {
+        .stats-container {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-tabs {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tab-btn {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .card-content p {
+            font-size: 1.1rem;
+        }
+
+        .step {
+            margin: 1rem 0;
+        }
+    }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            z-index: 1001;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .menu-items {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .menu-items.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .cta-buttons {
+                display: none;
+            }
+
+            .menu-items.active+.cta-buttons {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                max-width: 300px;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .profile-card {
+            padding: 2rem;
+            min-height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+            min-height: 80vh;
+            padding: 3rem 1.5rem 2rem 1.5rem;
+        }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <div class="logo-container">
+                <img src="tyf.png" alt="Teach Youth First Logo" class="logo-image">
+                <div class="logo">Teach Youth First</div>
+            </div>                
+            <button class="hamburger" aria-label="Toggle menu">☰</button>
+            <div class="menu-items">
+                <a href="#programs
+                ">Programs</a>
+                <a href="#partners">Partners</a>
+                <a href="#team">Our Team</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#blog">Blog</a>
+            </div>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Donate</button>
+                <button class="btn btn-outline">Join Our Team</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empowering Youth Through Education</h1>
+            <p>Supporting underprivileged children in Sarawak with quality early education</p>
+            <button class="btn btn-primary">Learn More</button>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <div class="container">
+            <div class="section-tabs">
+                <button class="tab-btn active" data-tab="mission">Mission</button>
+                <button class="tab-btn" data-tab="vision">Vision</button>
+                <button class="tab-btn" data-tab="approach">Approach</button>
+            </div>
+    
+            <div class="profile-grid">
+                <div class="profile-card active" id="mission">
+                    <h2>Our Mission</h2>
+                    <div class="card-content">
+                        <i class="mission-icon">🎯</i>
+                        <p>To provide quality early education and support to underprivileged children in Sarawak, ensuring every child has the opportunity to build a strong educational foundation for their future.</p>
+                        <div class="stats-container">
+                            <div class="stat-item" data-count="500">
+                                <span class="counter">0</span>
+                                <span class="stat-label">Children Helped</span>
+                            </div>
+                            <div class="stat-item" data-count="20">
+                                <span class="counter">0</span>
+                                <span class="stat-label">Communities Reached</span>
+                            </div>
+                        </div>
+                        <button class="read-more-btn">Read More ></button>
+                    </div>
+                </div>
+
+                <div class="profile-card" id="vision">
+                    <h2>Our Vision</h2>
+                    <div class="card-content">
+                        <i class="vision-icon">🌟</i>
+                        <p>A Sarawak where every child, regardless of their background, has access to quality education and the resources they need to reach their full potential.</p>
+                        <div class="progress-container">
+                            <div class="progress-item">
+                                <label>2024 Goal Progress</label>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%">65%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+                </div>
+    
+                <div class="profile-card" id="approach">
+                    <h2>Our Approach</h2>
+                    <div class="card-content">
+                        <i class="approach-icon">🤝</i>
+                        <p>We work through community partnerships, dedicated volunteers, and innovative educational programs to create lasting impact in children's lives.</p>
+                        <div class="approach-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Community Assessment</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Program Development</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Implementation</span>
+                            </div>
+                        </div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>                  
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const menuItems = document.querySelector('.menu-items');
+        const ctaButtons = document.querySelector('.cta-buttons');
+
+        hamburger.addEventListener('click', () => {
+            menuItems.classList.toggle('active');
+            ctaButtons.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.menu-items a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuItems.classList.remove('active');
+                ctaButtons.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+       // Tab switching functionality
+       document.addEventListener('DOMContentLoaded', function() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const profileCards = document.querySelectorAll('.profile-card');
+
+        tabBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and cards
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                profileCards.forEach(card => card.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding card
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    });
+    
+    // Counter animation (keep existing counter code)
+    const counters = document.querySelectorAll('.counter');
+    
+    const animateCounter = (counter, target) => {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            counter.textContent = Math.floor(current);
+            if (current >= target) {
+                counter.textContent = target;
+                clearInterval(timer);
+            }
+        }, 20);
+    };
+
+    // Intersection Observer (keep existing observer code)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target.querySelector('.counter');
+                const target = parseInt(entry.target.dataset.count);
+                animateCounter(counter, target);
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    document.querySelectorAll('.stat-item').forEach(item => {
+        observer.observe(item);
+    });
+    </script>
+</body>
+
+</html>
