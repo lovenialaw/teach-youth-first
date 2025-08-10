@@ -545,6 +545,108 @@ section[id] {
     margin-right: auto;
 }
 
+/* Profile Layout - Minimalistic & Vintage */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    border: 1px solid rgba(142, 21, 22, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.profile-text {
+    padding-right: 1rem;
+}
+
+.vintage-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    position: relative;
+}
+
+.vintage-text::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    font-family: serif;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.vintage-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    filter: sepia(0.3) contrast(1.1) brightness(0.95);
+    border: 3px solid rgba(142, 21, 22, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.vintage-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(142, 21, 22, 0.05) 0%, transparent 50%, rgba(142, 21, 22, 0.05) 100%);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.vintage-image:hover {
+    filter: sepia(0.2) contrast(1.05) brightness(1);
+    transform: scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design for profile layout */
+@media (max-width: 768px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .profile-text {
+        padding-right: 0;
+        order: 2;
+    }
+
+    .profile-image {
+        order: 1;
+    }
+
+    .vintage-text::before {
+        display: none;
+    }
+
+    .vintage-image {
+        max-width: 100%;
+    }
+}
+
 .activities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
