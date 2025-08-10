@@ -1,7 +1,30 @@
 :root {
     --primary-color: #8e1516;
     --secondary-color: #ffffff;
-    --text-color: #333333;
+    --text-color: #2c3e50;
+
+    /* New sophisticated color palette */
+    --accent-gold: #f39c12;
+    --accent-teal: #16a085;
+    --accent-purple: #8e44ad;
+    --accent-orange: #e67e22;
+    --accent-blue: #3498db;
+
+    /* Neutral tones */
+    --warm-gray: #7f8c8d;
+    --light-warm: #ecf0f1;
+    --dark-warm: #34495e;
+
+    /* Background gradients */
+    --gradient-primary: linear-gradient(135deg, #8e1516 0%, #c0392b 100%);
+    --gradient-secondary: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    --gradient-accent: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+    --gradient-warm: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+
+    /* Shadow colors */
+    --shadow-primary: rgba(142, 21, 22, 0.15);
+    --shadow-gold: rgba(243, 156, 18, 0.15);
+    --shadow-teal: rgba(22, 160, 133, 0.15);
 }
 
 * {
@@ -16,7 +39,7 @@ body {
     color: var(--text-color);
     overflow-x: hidden;
     padding-top: 70px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: var(--gradient-warm);
     min-height: 100vh;
     /* Add padding to body to account for fixed navbar */
 }
@@ -24,7 +47,7 @@ body {
 /* Add smooth scrolling to the whole page */
 html {
     scroll-behavior: smooth;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: var(--gradient-warm);
 }
 
 /* Navigation */
@@ -513,7 +536,7 @@ section[id] {
 /* Overview Section */
 .overview-section {
     padding: 5rem 2rem;
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, var(--light-warm) 0%, #ffffff 100%);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease;
@@ -548,15 +571,15 @@ section[id] {
 /* Profile Layout - Minimalistic & Vintage */
 .profile-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 3rem;
     align-items: center;
     margin-bottom: 3rem;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(236, 240, 241, 0.8) 100%);
     border-radius: 15px;
-    border: 1px solid rgba(142, 21, 22, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--shadow-primary);
+    box-shadow: 0 8px 32px var(--shadow-primary);
 }
 
 .profile-text {
@@ -566,8 +589,8 @@ section[id] {
 .vintage-text {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #4a4a4a;
-    font-weight: 300;
+    color: var(--dark-warm);
+    font-weight: 400;
     letter-spacing: 0.5px;
     text-align: justify;
     position: relative;
@@ -576,12 +599,13 @@ section[id] {
 .vintage-text::before {
     content: '"';
     font-size: 3rem;
-    color: var(--primary-color);
-    opacity: 0.3;
+    color: var(--accent-gold);
+    opacity: 0.6;
     position: absolute;
     top: -1rem;
     left: -1rem;
     font-family: serif;
+    text-shadow: 2px 2px 4px var(--shadow-gold);
 }
 
 .profile-image {
@@ -593,13 +617,13 @@ section[id] {
 
 .vintage-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 280px;
     height: auto;
-    border-radius: 8px;
-    filter: sepia(0.3) contrast(1.1) brightness(0.95);
-    border: 3px solid rgba(142, 21, 22, 0.2);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s ease;
+    border-radius: 12px;
+    filter: sepia(0.4) contrast(1.2) brightness(0.9) saturate(1.1);
+    border: 4px solid var(--accent-gold);
+    box-shadow: 0 12px 35px var(--shadow-gold), 0 0 20px rgba(243, 156, 18, 0.3);
+    transition: all 0.5s ease;
     position: relative;
 }
 
@@ -616,9 +640,10 @@ section[id] {
 }
 
 .vintage-image:hover {
-    filter: sepia(0.2) contrast(1.05) brightness(1);
-    transform: scale(1.02);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    filter: sepia(0.2) contrast(1.1) brightness(1.05) saturate(1.2);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 20px 45px var(--shadow-gold), 0 0 30px rgba(243, 156, 18, 0.4);
+    border-color: var(--accent-orange);
 }
 
 /* Responsive design for profile layout */
