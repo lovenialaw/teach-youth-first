@@ -25,16 +25,16 @@ document.querySelectorAll('.menu-items a').forEach(link => {
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         // Remove active class from all links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        
+
         // Add active class to clicked link
         this.classList.add('active');
-        
+
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        
+
         if (targetSection) {
             targetSection.scrollIntoView({
                 behavior: 'smooth',
@@ -48,18 +48,18 @@ document.querySelectorAll('.nav-link').forEach(link => {
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (window.pageYOffset >= (sectionTop - 200)) {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -297,6 +297,111 @@ document.addEventListener('DOMContentLoaded', function () {
     initFAQ();
 });
 
+// Image Animation System
+function initImageAnimations() {
+    const profileImages = document.getElementById('profileImages');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const slideshowBtn = document.getElementById('slideshowBtn');
+    const stopBtn = document.getElementById('stopBtn');
+
+    if (!profileImages || !shuffleBtn || !slideshowBtn || !stopBtn) return;
+
+    let slideshowInterval;
+    let isSlideshowActive = false;
+
+    // Shuffle functionality
+    shuffleBtn.addEventListener('click', () => {
+        const imageCards = profileImages.querySelectorAll('.image-card');
+        const cardsArray = Array.from(imageCards);
+
+        // Remove any existing animation classes
+        cardsArray.forEach(card => {
+            card.classList.remove('shuffling', 'slideshow', 'highlight');
+        });
+
+        // Shuffle the array
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+        }
+
+        // Animate each card with shuffle effect
+        cardsArray.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('shuffling');
+                profileImages.appendChild(card);
+
+                // Remove animation class after animation completes
+                setTimeout(() => {
+                    card.classList.remove('shuffling');
+                }, 600);
+            }, index * 150);
+        });
+    });
+
+    // Slideshow functionality
+    slideshowBtn.addEventListener('click', () => {
+        if (isSlideshowActive) return;
+
+        isSlideshowActive = true;
+        slideshowBtn.textContent = '⏸️ Pause';
+        slideshowBtn.style.background = 'linear-gradient(135deg, var(--accent-teal), var(--accent-blue))';
+
+        const imageCards = profileImages.querySelectorAll('.image-card');
+        let currentIndex = 0;
+
+        slideshowInterval = setInterval(() => {
+            // Remove previous highlight
+            imageCards.forEach(card => card.classList.remove('highlight'));
+
+            // Add highlight to current card
+            imageCards[currentIndex].classList.add('highlight');
+
+            // Move to next card
+            currentIndex = (currentIndex + 1) % imageCards.length;
+        }, 2000);
+    });
+
+    // Stop functionality
+    stopBtn.addEventListener('click', () => {
+        if (slideshowInterval) {
+            clearInterval(slideshowInterval);
+            slideshowInterval = null;
+        }
+
+        isSlideshowActive = false;
+        slideshowBtn.textContent = '▶️ Slideshow';
+        slideshowBtn.style.background = 'linear-gradient(135deg, var(--accent-gold), var(--accent-orange))';
+
+        // Remove all animation classes
+        const imageCards = profileImages.querySelectorAll('.image-card');
+        imageCards.forEach(card => {
+            card.classList.remove('shuffling', 'slideshow', 'highlight');
+        });
+    });
+
+    // Add click interaction to individual cards
+    const imageCards = profileImages.querySelectorAll('.image-card');
+    imageCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Stop slideshow if active
+            if (isSlideshowActive) {
+                stopBtn.click();
+            }
+
+            // Add highlight effect
+            card.classList.remove('highlight');
+            void card.offsetWidth; // Trigger reflow
+            card.classList.add('highlight');
+
+            // Remove highlight after animation
+            setTimeout(() => {
+                card.classList.remove('highlight');
+            }, 500);
+        });
+    });
+}
+
 // Enhanced Hero Section Animations
 document.addEventListener('DOMContentLoaded', function () {
     const hero = document.querySelector('.hero');
@@ -389,4 +494,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
+
+    // Initialize Image Animation System
+    initImageAnimations();
 });
