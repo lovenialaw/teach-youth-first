@@ -862,9 +862,8 @@ section[id] {
     height: 120px;
     object-fit: cover;
     border-radius: 12px;
-    filter: sepia(0.4) contrast(1.2) brightness(0.9) saturate(1.1);
-    border: 3px solid var(--accent-gold);
-    box-shadow: 0 8px 25px var(--shadow-gold), 0 0 15px rgba(243, 156, 18, 0.3);
+    filter: sepia(0.4) contrast(1.2) brightness(0.9) saturate(1.1) blur(0.5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease;
     position: relative;
 }
@@ -882,10 +881,9 @@ section[id] {
 }
 
 .vintage-image:hover {
-    filter: sepia(0.2) contrast(1.1) brightness(1.05) saturate(1.2);
+    filter: sepia(0.2) contrast(1.1) brightness(1.05) saturate(1.2) blur(0.3px);
     transform: scale(1.05) rotate(2deg);
-    box-shadow: 0 20px 45px var(--shadow-gold), 0 0 30px rgba(243, 156, 18, 0.4);
-    border-color: var(--accent-orange);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive design for profile layout */
@@ -975,45 +973,85 @@ section[id] {
 
 /* Stats Section */
 .stats-container {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin: 3rem 0;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
 }
 
 .stat-item {
     text-align: center;
-    min-width: 120px;
-    padding: 1rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #c62828, var(--accent-gold));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.stat-item:hover::before {
+    transform: scaleX(1);
 }
 
 .stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%);
 }
 
 .counter {
-    font-size: 2.5rem;
-    font-weight: bold;
-    background: linear-gradient(45deg, var(--primary-color), #c62828);
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--primary-color), #c62828, var(--accent-gold));
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     display: block;
     margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.stat-item:hover .counter {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, var(--accent-gold), var(--primary-color), #c62828);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .stat-label {
     display: block;
-    font-size: 1rem;
-    color: #555;
-    margin-top: 0.5rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-item:hover .stat-label {
+    color: var(--primary-color);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -1044,8 +1082,258 @@ section[id] {
     }
 
     .stats-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 300px;
+    }
+
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .counter {
+        font-size: 2.8rem;
+    }
+}
+
+/* Mission & Vision Section */
+.mission-vision-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-vision-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.mission-vision-content {
+    position: relative;
+    z-index: 2;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mission-card,
+.vision-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    background: white;
+}
+
+.mission-card:hover,
+.vision-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.mission-image,
+.vision-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.mission-vision-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.8) contrast(1.1);
+}
+
+.mission-card:hover .mission-vision-image,
+.vision-card:hover .mission-vision-image {
+    transform: scale(1.1);
+    filter: brightness(1) contrast(1.2);
+}
+
+.mission-overlay,
+.vision-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(142, 21, 22, 0.95) 0%, rgba(22, 160, 133, 0.9) 100%);
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mission-card:hover .mission-overlay,
+.vision-card:hover .vision-overlay {
+    transform: translateY(0);
+}
+
+.mission-overlay h3,
+.vision-overlay h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mission-overlay p,
+.vision-overlay p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.1s;
+}
+
+.mission-card:hover .mission-overlay p,
+.vision-card:hover .vision-overlay p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Weekly Resources Section */
+.weekly-resources-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.weekly-resources-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.2;
+}
+
+.resources-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.resources-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #ffffff, #f0f0f0);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.resources-header p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.resources-content {
+    position: relative;
+    z-index: 2;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resource-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.resource-item:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1);
+}
+
+.resource-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+    transform: rotate(0deg);
+    font-style: normal;
+}
+
+.resource-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.resource-item p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Responsive design for new sections */
+@media (max-width: 768px) {
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .mission-image,
+    .vision-image {
+        height: 250px;
+    }
+
+    .resources-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .resources-header p {
+        font-size: 1.1rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .resource-item {
+        padding: 2rem 1.5rem;
     }
 }
 
