@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYF Layout Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for the example */
+        .example-section {
+            padding: 2rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .grid-example {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>TYF Layout Example - Clean & Organized</h1>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to TYF</h1>
+                <p>Empowering youth through education and community</p>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <div class="overview-content">
+                <h2>About TYF</h2>
+                <p>We are dedicated to providing educational resources and opportunities for young people in our
+                    community.</p>
+
+                <div class="grid-example">
+                    <div class="example-section">
+                        <h3>Our Mission</h3>
+                        <div class="image-placeholder">Mission Image Placeholder</div>
+                        <p>To inspire and educate the next generation of leaders.</p>
+                    </div>
+
+                    <div class="example-section">
+                        <h3>Our Vision</h3>
+                        <div class="image-placeholder">Vision Image Placeholder</div>
+                        <p>A world where every youth has access to quality education.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="mission-vision-section">
+            <div class="mission-vision-content">
+                <h2>Mission & Vision</h2>
+                <div class="mission-vision-grid">
+                    <div class="mission-card">
+                        <div class="mission-image">
+                            <div class="image-placeholder">Mission Image</div>
+                        </div>
+                        <div class="mission-title">Our Mission</div>
+                        <div class="mission-overlay">
+                            <h3>Empower Youth</h3>
+                            <p>We strive to provide educational opportunities that empower young people to reach their
+                                full potential.</p>
+                        </div>
+                    </div>
+
+                    <div class="vision-card">
+                        <div class="vision-image">
+                            <div class="image-placeholder">Vision Image</div>
+                        </div>
+                        <div class="vision-title">Our Vision</div>
+                        <div class="vision-overlay">
+                            <h3>Bright Future</h3>
+                            <p>Creating a world where every young person has access to quality education and
+                                opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="weekly-resources-section">
+            <div class="resources-header">
+                <h1>Our Approach</h1>
+                <p>Comprehensive programs designed for youth development</p>
+            </div>
+
+            <div class="resources-content">
+                <div class="resources-grid">
+                    <div class="resource-item">
+                        <div class="image-placeholder">Education Icon</div>
+                        <h3>Education Programs</h3>
+                        <p>Comprehensive learning opportunities for all ages.</p>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="image-placeholder">Community Icon</div>
+                        <h3>Community Building</h3>
+                        <p>Fostering connections and support networks.</p>
+                    </div>
+
+                    <div class="resource-item">
+                        <div class="image-placeholder">Leadership Icon</div>
+                        <h3>Leadership Development</h3>
+                        <p>Building confidence and leadership skills.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="example-section">
+            <h2>Our Impact</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="counter">500+</span>
+                    <span class="stat-label">Youth Served</span>
+                </div>
+                <div class="stat-item">
+                    <span class="counter">50+</span>
+                    <span class="stat-label">Programs</span>
+                </div>
+                <div class="stat-item">
+                    <span class="counter">95%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
