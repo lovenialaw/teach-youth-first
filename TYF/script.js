@@ -428,6 +428,58 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    // Donation Modal Functionality
+    const modal = document.getElementById('donationModal');
+    const donateBtn = document.getElementById('donateBtn');
+    const donateBtnFooter = document.getElementById('donateBtnFooter');
+    const modalClose = document.getElementById('modalClose');
+
+    // Function to open modal
+    function openModal() {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close modal
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Event listeners for donate buttons
+    if (donateBtn) {
+        donateBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    if (donateBtnFooter) {
+        donateBtnFooter.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    // Event listener for close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking outside of it
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+
     // Initialize page
     updateActiveNav();
     updateNavbar();
