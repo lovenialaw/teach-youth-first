@@ -484,6 +484,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Counter Animation for Impact Section
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.floor(current) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + suffix;
+                }
+            };
+
+            updateCounter();
+        });
+    }
+
+    // Intersection Observer for Impact Section
+    const impactSection = document.getElementById('impact');
+    if (impactSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(impactSection);
+    }
+
     // Initialize page
     updateActiveNav();
     updateNavbar();
