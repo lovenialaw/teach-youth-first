@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Hover effects for cards
-    const cards = document.querySelectorAll('.program-card, .partner-card, .team-card, .mission-card');
+    const cards = document.querySelectorAll('.program-card, .partner-card, .mission-card');
 
     cards.forEach(card => {
         card.addEventListener('mouseenter', function () {
@@ -429,54 +429,58 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Donation Modal Functionality
-    const modal = document.getElementById('donationModal');
-    const donateBtn = document.getElementById('donateBtn');
-    const donateBtnFooter = document.getElementById('donateBtnFooter');
-    const modalClose = document.getElementById('modalClose');
+    const donationModal = document.getElementById('donation-modal');
+    const donateBtn = document.getElementById('donate-btn');
+    const footerDonateBtn = document.getElementById('footer-donate-btn');
+    const closeModal = document.getElementById('close-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // Function to open modal
-    function openModal() {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    // Function to close modal
-    function closeModal() {
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    }
-
-    // Event listeners for donate buttons
-    if (donateBtn) {
-        donateBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal();
-        });
-    }
-
-    if (donateBtnFooter) {
-        donateBtnFooter.addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal();
-        });
-    }
-
-    // Event listener for close button
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-
-    // Close modal when clicking outside of it
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
+    // Open donation modal
+    function openDonationModal() {
+        if (donationModal) {
+            donationModal.style.display = 'block';
         }
-    });
+    }
+
+    // Close donation modal
+    function closeDonationModal() {
+        if (donationModal) {
+            donationModal.style.display = 'none';
+        }
+    }
+
+    // Event listeners for donation modal
+    if (donateBtn) {
+        donateBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openDonationModal();
+        });
+    }
+
+    if (footerDonateBtn) {
+        footerDonateBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openDonationModal();
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeDonationModal);
+    }
+
+    // Close modal when clicking outside
+    if (donationModal) {
+        donationModal.addEventListener('click', function (e) {
+            if (e.target === donationModal) {
+                closeDonationModal();
+            }
+        });
+    }
 
     // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && donationModal && donationModal.style.display === 'block') {
+            closeDonationModal();
         }
     });
 
