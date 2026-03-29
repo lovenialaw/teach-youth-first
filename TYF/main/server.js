@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -8,7 +9,17 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+
+const blockedStatic = new Set(['server.js', 'package.json', 'package-lock.json']);
+app.use((req, res, next) => {
+    if (blockedStatic.has(path.basename(req.path))) {
+        return res.status(404).end();
+    }
+    next();
+});
+
+// static/, logo/, profiles/ live beside this file so /static, /logo, /profiles URLs work.
+app.use(express.static(__dirname, { index: 'index.html' }));
 
 // JWT Secret Key
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';

@@ -19,27 +19,31 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+    const NAV_SCROLL_OFFSET = 88;
+
+    function scrollToHashTarget(href) {
+        if (!href || href === '#') return false;
+        const targetSection = document.querySelector(href);
+        if (!targetSection) return false;
+        const offsetTop = targetSection.offsetTop - NAV_SCROLL_OFFSET;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
         });
-    });
+        return true;
+    }
 
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
+    // Smooth scrolling for in-page anchors (nav, footer, hero, program card arrows, etc.)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
+        if (!document.querySelector(href)) return;
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+            scrollToHashTarget(href);
+            if (anchor.classList.contains('nav-link')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         });
     });
@@ -48,16 +52,22 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateActiveNav() {
         const sections = document.querySelectorAll('section[id]');
         const scrollPos = window.scrollY + 100;
+        const programsNavLink = document.querySelector('.nav-link[href="#programs"]');
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
 
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 navLinks.forEach(link => link.classList.remove('active'));
-                if (navLink) navLink.classList.add('active');
+
+                if (sectionId === 'programs' || (sectionId && sectionId.startsWith('program-'))) {
+                    if (programsNavLink) programsNavLink.classList.add('active');
+                } else {
+                    const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                    if (navLink) navLink.classList.add('active');
+                }
             }
         });
     }
@@ -378,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Hover effects for cards
-    const cards = document.querySelectorAll('.program-card, .partner-card, .mission-card');
+    const cards = document.querySelectorAll('.program-overview-card, .partner-card, .mission-card');
 
     cards.forEach(card => {
         card.addEventListener('mouseenter', function () {
@@ -427,62 +437,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     };
-
-    // Donation Modal Functionality
-    const donationModal = document.getElementById('donation-modal');
-    const donateBtn = document.getElementById('donate-btn');
-    const footerDonateBtn = document.getElementById('footer-donate-btn');
-    const closeModal = document.getElementById('close-modal');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-
-    // Open donation modal
-    function openDonationModal() {
-        if (donationModal) {
-            donationModal.style.display = 'block';
-        }
-    }
-
-    // Close donation modal
-    function closeDonationModal() {
-        if (donationModal) {
-            donationModal.style.display = 'none';
-        }
-    }
-
-    // Event listeners for donation modal
-    if (donateBtn) {
-        donateBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            openDonationModal();
-        });
-    }
-
-    if (footerDonateBtn) {
-        footerDonateBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            openDonationModal();
-        });
-    }
-
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeDonationModal);
-    }
-
-    // Close modal when clicking outside
-    if (donationModal) {
-        donationModal.addEventListener('click', function (e) {
-            if (e.target === donationModal) {
-                closeDonationModal();
-            }
-        });
-    }
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && donationModal && donationModal.style.display === 'block') {
-            closeDonationModal();
-        }
-    });
 
     // Counter Animation for Impact Section
     function animateCounters() {

@@ -9,10 +9,9 @@
     content="Teach Youth First is a non-profit organization dedicated to providing quality education and support to children in Sarawak, Malaysia." />
   <meta name="keywords" content="education, Sarawak, Malaysia, non-profit, children, teaching, volunteer" />
   <meta name="author" content="Teach Youth First" />
-  <link rel="icon" type="image/x-icon" href="../logo/tyf.png" />
+  <link rel="icon" type="image/png" href="static/tyf.png" />
+  <link rel="apple-touch-icon" href="static/tyf.png" />
   <link rel="canonical" href="https://teachyouthfirst" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -23,7 +22,8 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <img src="../logo/tyf.png" alt="TYF Logo" class="logo-img" />
+        <img src="static/tyf.png" alt="TYF Logo" class="logo-img" width="40" height="40" loading="eager"
+          decoding="async" />
         <span class="logo-text">Teach Youth First</span>
       </div>
       <div class="nav-menu" id="nav-menu">
@@ -32,10 +32,10 @@
         <a href="#programs" class="nav-link">Programs</a>
         <a href="#partners" class="nav-link">Partners</a>
         <a href="#team" class="nav-link">Team</a>
+        <a href="#impact" class="nav-link">Impact</a>
         <a href="#contact" class="nav-link">Contact</a>
         <div class="nav-actions">
           <a href="https://forms.gle/LG1CHum1QNy9DEov6" class="btn btn-join" target="_blank">Join Us</a>
-          <button id="donate-btn" class="btn btn-donate">Donate</button>
         </div>
       </div>
       <div class="nav-toggle" id="nav-toggle">
@@ -51,7 +51,8 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title" data-aos="fade-up">
-        Empowering Education in Sarawak
+        Empowering Education<br />
+        in Sarawak
       </h1>
       <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
         We are dedicated to providing quality education and support to
@@ -76,7 +77,7 @@
       </div>
       <div class="about-content">
         <div class="about-text" data-aos="fade-right">
-          <h3>Who We Are</h3>
+          <h3>Who Are We</h3>
           <p>
             Teach Youth First (TYF) is a non-profit organization dedicated to
             bridging educational gaps for children in Sarawak, Malaysia. We
@@ -87,29 +88,30 @@
             Our team of passionate volunteers works tirelessly to provide
             English and Mathematics lessons to children in various
             communities, including children's homes and schools across
-            Sarawak.
+            Sarawak. Beyond that, we also conduct skills development workshops
+            for primary school students.
           </p>
           <div class="about-stats">
             <div class="stat-item">
-              <span class="stat-number">160+</span>
+              <span class="stat-number">200+</span>
               <span class="stat-label">Children Supported</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">4</span>
-              <span class="stat-label">Partner Organizations</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">8</span>
-              <span class="stat-label">Schools</span>
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Partners</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">10+</span>
+              <span class="stat-label">Schools</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
               <span class="stat-label">Dedicated Volunteers</span>
             </div>
           </div>
         </div>
         <div class="about-image" data-aos="fade-left">
-          <img src="../static/picture 4.jpg" alt="Community Engagement" class="about-img" />
+          <img src="static/story.jpeg" alt="Community Engagement" class="about-img" />
         </div>
       </div>
     </div>
@@ -123,7 +125,7 @@
           <div class="mission-card">
             <div class="mission-overlay"></div>
             <div class="mission-image">
-              <img src="../static/picture 11.jpg" alt="Our Mission" />
+              <img src="static/mission.jpeg" alt="Our Mission" />
             </div>
             <div class="mission-content">
               <h3>Our Mission</h3>
@@ -137,7 +139,7 @@
           <div class="vision-card">
             <div class="vision-overlay"></div>
             <div class="vision-image">
-              <img src="../static/picture 8.jpg" alt="Our Vision" />
+              <img src="static/vision.jpeg" alt="Our Vision" />
             </div>
             <div class="vision-content">
               <h3>Our Vision</h3>
@@ -153,119 +155,236 @@
     </div>
   </section>
 
-  <!-- Programs Section -->
-  <section id="programs" class="section programs-section">
+  <!-- Programs overview (card grid — only arrow links scroll to each program) -->
+  <section id="programs" class="section programs-overview" aria-labelledby="programs-overview-title">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">OUR PROGRAMS</h2>
+        <h2 id="programs-overview-title" class="section-title">OUR PROGRAMS</h2>
         <p class="section-subtitle">
-          Comprehensive educational initiatives designed to support children's
-          learning and development.
+          Comprehensive educational initiatives designed to support children's learning and development.
         </p>
       </div>
-      <div class="programs-timeline">
-        <div class="timeline-line"></div>
+      <div class="programs-overview-grid">
+        <article class="program-overview-card" data-aos="fade-up">
+          <div class="program-overview-media" style="background-image: url('static/literacy.jpeg');" role="img"
+            aria-hidden="true"></div>
+          <h3 class="program-overview-title">TYF Literacy</h3>
+          <a href="#program-literacy" class="program-overview-jump" aria-label="View TYF Literacy details"><svg
+              class="program-overview-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 19.5L19 5m0 0v7.5m0-7.5h-7.5" />
+            </svg></a>
+        </article>
+        <article class="program-overview-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="program-overview-media" style="background-image: url('static/numeracy.jpeg');" role="img"
+            aria-hidden="true"></div>
+          <h3 class="program-overview-title">TYF Numeracy</h3>
+          <a href="#program-numeracy" class="program-overview-jump" aria-label="View TYF Numeracy details"><svg
+              class="program-overview-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 19.5L19 5m0 0v7.5m0-7.5h-7.5" />
+            </svg></a>
+        </article>
+        <article class="program-overview-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="program-overview-media" style="background-image: url('static/skillsdev.jpeg');" role="img"
+            aria-hidden="true"></div>
+          <h3 class="program-overview-title">Skills Development</h3>
+          <a href="#program-skills" class="program-overview-jump" aria-label="View Skills Development details"><svg
+              class="program-overview-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 19.5L19 5m0 0v7.5m0-7.5h-7.5" />
+            </svg></a>
+        </article>
+        <article class="program-overview-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="program-overview-media" style="background-image: url('static/resources.jpg');" role="img"
+            aria-hidden="true"></div>
+          <h3 class="program-overview-title">Module &amp; Stationery</h3>
+          <a href="#program-modules" class="program-overview-jump" aria-label="View Module and Stationery details"><svg
+              class="program-overview-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 19.5L19 5m0 0v7.5m0-7.5h-7.5" />
+            </svg></a>
+        </article>
+        <article class="program-overview-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="program-overview-media" style="background-image: url('static/community.JPG');" role="img"
+            aria-hidden="true"></div>
+          <h3 class="program-overview-title">Volunteer Engagement</h3>
+          <a href="#program-volunteers" class="program-overview-jump"
+            aria-label="View Volunteer Engagement details"><svg class="program-overview-arrow-svg"
+              xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M4.5 19.5L19 5m0 0v7.5m0-7.5h-7.5" />
+            </svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="timeline-item" data-aos="fade-up">
-          <div class="timeline-marker">
-            <div class="marker-icon">
-              <i class="fas fa-book"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-card">
-              <div class="timeline-image">
-                <img src="../static/picture 13.jpg" alt="English Lessons" />
-              </div>
-              <div class="timeline-text">
-                <div class="program-number">01</div>
-                <h3>TYF Literacy</h3>
-                <p>
-                  We provide introductory English lessons to children, helping
-                  them develop essential language skills for their academic
-                  journey and future opportunities.
-                </p>
-                <ul class="program-features">
-                  <li><i class="fas fa-check"></i> Biweekly sessions</li>
-                  <li>
-                    <i class="fas fa-check"></i> Interactive learning methods
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i> Age-appropriate curriculum
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Program detail: Literacy -->
+  <section id="program-literacy" class="program-detail-hero" aria-labelledby="program-literacy-title">
+    <div class="program-detail-watermark" aria-hidden="true">01</div>
+    <div class="container program-detail-inner">
+      <div class="program-detail-copy">
+        <p class="program-detail-tagline">CONFIDENCE THROUGH LANGUAGE.</p>
+        <h2 id="program-literacy-title" class="program-detail-title">
+          TYF Literacy
+        </h2>
+        <p class="program-detail-lead">
+          We provide introductory English lessons to children, helping them
+          develop
+          <span class="program-detail-highlight">essential language skills</span>
+          for their academic journey and
+          <span class="program-detail-highlight">future opportunities</span>.
+        </p>
+        <ul class="program-features program-detail-features">
+          <li><i class="fas fa-check"></i> Biweekly sessions</li>
+          <li>
+            <i class="fas fa-check"></i> Interactive learning methods
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Age-appropriate curriculum
+          </li>
+        </ul>
+      </div>
+      <div class="program-detail-figure">
+        <img src="static/literacy.jpeg" alt="English lessons with children" />
+      </div>
+    </div>
+  </section>
 
-        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-          <div class="timeline-marker">
-            <div class="marker-icon">
-              <i class="fas fa-calculator"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-card">
-              <div class="timeline-image">
-                <img src="../static/picture 2.jpg" alt="Mathematics Program" />
-              </div>
-              <div class="timeline-text">
-                <div class="program-number">02</div>
-                <h3>TYF Numeracy</h3>
-                <p>
-                  Our mathematics program focuses on building strong
-                  foundational skills, making math accessible and enjoyable
-                  for children of all learning levels.
-                </p>
-                <ul class="program-features">
-                  <li><i class="fas fa-check"></i> Biweekly sessions</li>
-                  <li>
-                    <i class="fas fa-check"></i> Interactive learning methods
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i> Age-appropriate curriculum
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Program detail: Numeracy -->
+  <section id="program-numeracy" class="program-detail-hero" aria-labelledby="program-numeracy-title">
+    <div class="program-detail-watermark" aria-hidden="true">02</div>
+    <div class="container program-detail-inner">
+      <div class="program-detail-copy">
+        <p class="program-detail-tagline">FOUNDATIONS THAT LAST.</p>
+        <h2 id="program-numeracy-title" class="program-detail-title">
+          TYF Numeracy
+        </h2>
+        <p class="program-detail-lead">
+          Our mathematics program focuses on building strong
+          <span class="program-detail-highlight">foundational skills</span>,
+          making math
+          <span class="program-detail-highlight">accessible and enjoyable</span>
+          for children of all learning levels.
+        </p>
+        <ul class="program-features program-detail-features">
+          <li><i class="fas fa-check"></i> Biweekly sessions</li>
+          <li>
+            <i class="fas fa-check"></i> Interactive learning methods
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Age-appropriate curriculum
+          </li>
+        </ul>
+      </div>
+      <div class="program-detail-figure">
+        <img src="static/numeracy.jpeg" alt="Mathematics learning" />
+      </div>
+    </div>
+  </section>
 
-        <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
-          <div class="timeline-marker">
-            <div class="marker-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-card">
-              <div class="timeline-image">
-                <img src="../static/picture 20.jpg" alt="Workshop Activities" />
-              </div>
-              <div class="timeline-text">
-                <div class="program-number">03</div>
-                <h3>TYF Skills Development</h3>
-                <p>
-                  We facilitate engaging workshops and activities that promote
-                  creativity, teamwork, and personal development beyond
-                  traditional academic subjects.
-                </p>
-                <ul class="program-features">
-                  <li>
-                    <i class="fas fa-check"></i> Creative arts and crafts
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i> Team building exercises
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i> Life skills development
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Program detail: Skills -->
+  <section id="program-skills" class="program-detail-hero" aria-labelledby="program-skills-title">
+    <div class="program-detail-watermark" aria-hidden="true">03</div>
+    <div class="container program-detail-inner">
+      <div class="program-detail-copy">
+        <p class="program-detail-tagline">CREATIVITY AND CHARACTER.</p>
+        <h2 id="program-skills-title" class="program-detail-title">
+          TYF Skills Development
+        </h2>
+        <p class="program-detail-lead">
+          We facilitate engaging workshops and activities that promote
+          <span class="program-detail-highlight">creativity</span>,
+          <span class="program-detail-highlight">teamwork</span>, and personal
+          development beyond traditional academic subjects.
+        </p>
+        <ul class="program-features program-detail-features">
+          <li>
+            <i class="fas fa-check"></i> Creative arts and crafts
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Team building exercises
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Life skills development
+          </li>
+        </ul>
+      </div>
+      <div class="program-detail-figure">
+        <img src="static/skillsdev.jpeg" alt="Workshop activities" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Program detail: Modules -->
+  <section id="program-modules" class="program-detail-hero" aria-labelledby="program-modules-title">
+    <div class="program-detail-watermark" aria-hidden="true">04</div>
+    <div class="container program-detail-inner">
+      <div class="program-detail-copy">
+        <p class="program-detail-tagline">RESOURCES THAT REACH.</p>
+        <h2 id="program-modules-title" class="program-detail-title">
+          Module &amp; Stationery Development
+        </h2>
+        <p class="program-detail-lead">
+          We develop learning modules and source stationery so children have
+          <span class="program-detail-highlight">structured materials</span>
+          and supplies that support teaching in our
+          <span class="program-detail-highlight">partner homes and schools</span>.
+        </p>
+        <ul class="program-features program-detail-features">
+          <li>
+            <i class="fas fa-check"></i> Curriculum-aligned modules
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Stationery and learning kits
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Distribution to partner sites
+          </li>
+        </ul>
+      </div>
+      <div class="program-detail-figure">
+        <img src="static/resources.jpg" alt="Learning resources and stationery" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Program detail: Volunteers -->
+  <section id="program-volunteers" class="program-detail-hero" aria-labelledby="program-volunteers-title">
+    <div class="program-detail-watermark" aria-hidden="true">05</div>
+    <div class="container program-detail-inner">
+      <div class="program-detail-copy">
+        <p class="program-detail-tagline">PEOPLE WHO SHOW UP.</p>
+        <h2 id="program-volunteers-title" class="program-detail-title">
+          Volunteer Engagement
+        </h2>
+        <p class="program-detail-lead">
+          We
+          <span class="program-detail-highlight">recruit, train, and walk alongside</span>
+          volunteers who give their time to teach, mentor, and support children
+          across our programs and
+          <span class="program-detail-highlight">partner communities</span>.
+        </p>
+        <ul class="program-features program-detail-features">
+          <li>
+            <i class="fas fa-check"></i> Onboarding and training
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Roles across teaching &amp; events
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Community volunteering
+          </li>
+        </ul>
+      </div>
+      <div class="program-detail-figure">
+        <img src="static/community.JPG" alt="Community and volunteers" />
       </div>
     </div>
   </section>
@@ -283,7 +402,7 @@
       <div class="partners-list">
         <div class="partner-item" data-aos="fade-up">
           <div class="partner-image">
-            <img src="../static/tsa.jpg" alt="The Salvation Army" />
+            <img src="static/tsa.jpg" alt="The Salvation Army" />
           </div>
           <div class="partner-content">
             <h3>The Salvation Army</h3>
@@ -295,7 +414,7 @@
             </p>
             <div class="partner-stats">
               <div class="partner-stat">
-                <span class="stat-number">14</span>
+                <span class="stat-number">20+</span>
                 <span class="stat-label">Children Supported</span>
               </div>
             </div>
@@ -303,7 +422,7 @@
         </div>
         <div class="partner-item partner-reverse" data-aos="fade-up" data-aos-delay="200">
           <div class="partner-image">
-            <img src="../static/rumah-kanak.jpg" alt="Rumah Kanak-Kanak" />
+            <img src="static/rumah-kanak.jpg" alt="Rumah Kanak-Kanak" />
           </div>
           <div class="partner-content">
             <h3>Rumah Kanak-Kanak</h3>
@@ -315,7 +434,7 @@
             </p>
             <div class="partner-stats">
               <div class="partner-stat">
-                <span class="stat-number">30</span>
+                <span class="stat-number">30+</span>
                 <span class="stat-label">Children Supported</span>
               </div>
             </div>
@@ -323,7 +442,7 @@
         </div>
         <div class="partner-item" data-aos="fade-up" data-aos-delay="400">
           <div class="partner-image">
-            <img src="../static/pkb.png" alt="Pertubuhan Kebajikan Baiturrahmah" />
+            <img src="static/pkb.png" alt="Pertubuhan Kebajikan Baiturrahmah" />
           </div>
           <div class="partner-content">
             <h3>Pertubuhan Kebajikan Baiturrahmah</h3>
@@ -335,7 +454,26 @@
             </p>
             <div class="partner-stats">
               <div class="partner-stat">
-                <span class="stat-number">8</span>
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Children Supported</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="partner-item partner-reverse" data-aos="fade-up" data-aos-delay="600">
+          <div class="partner-image">
+            <img src="static/ylk.jpg" alt="Yayasan Lasallian Kuching" />
+          </div>
+          <div class="partner-content">
+            <h3>Yayasan Lasallian Kuching</h3>
+            <div class="partner-tag">Non-Profit Organization</div>
+            <p>
+              Yayasan Lasallian Kuching advances education amongst community outreach in Sarawak.
+              We conduct biweekly skills development workshops for primary school students across Sarawak.
+            </p>
+            <div class="partner-stats">
+              <div class="partner-stat">
+                <span class="stat-number">200+</span>
                 <span class="stat-label">Children Supported</span>
               </div>
             </div>
@@ -357,28 +495,28 @@
       </div>
       <div class="schools-grid">
         <div class="school-item" data-aos="fade-up">
-          <h4>SK Skibang</h4>
+          <h4>1. SK Skibang</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="100">
-          <h4>SK Stass</h4>
+          <h4>2. SK Stass</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="200">
-          <h4>SK Lobang Batu</h4>
+          <h4>3. SK Lobang Batu</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="300">
-          <h4>SK St. Jude Bunan</h4>
+          <h4>4. SK St. Jude Bunan</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="400">
-          <h4>SK St. Michael Mongkos</h4>
+          <h4>5. SK St. Michael Mongkos</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="500">
-          <h4>SK Tapu</h4>
+          <h4>6. SK Tapu</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="600">
-          <h4>SK Mapu</h4>
+          <h4>7. SK Mapu</h4>
         </div>
         <div class="school-item" data-aos="fade-up" data-aos-delay="700">
-          <h4>SK St. Andrew</h4>
+          <h4>8. SK St. Andrew</h4>
         </div>
       </div>
     </div>
@@ -400,7 +538,7 @@
         <div class="team-grid executive-grid">
           <div class="team-card executive-card" data-aos="fade-up" data-aos-delay="200">
             <div class="team-image">
-              <img src="../profiles/debre kok.jpg" alt="Debre Kok" />
+              <img src="profiles/debre kok.jpeg" alt="Debre Kok" />
             </div>
             <div class="team-info">
               <h4>Debre Kok</h4>
@@ -409,7 +547,7 @@
           </div>
           <div class="team-card executive-card" data-aos="fade-up">
             <div class="team-image">
-              <img src="../profiles/lovenia law.jpg" alt="Lovenia Law" />
+              <img src="profiles/lovenia law.jpeg" alt="Lovenia Law" />
             </div>
             <div class="team-info">
               <h4>Lovenia Law</h4>
@@ -418,7 +556,7 @@
           </div>
           <div class="team-card executive-card" data-aos="fade-up" data-aos-delay="400">
             <div class="team-image">
-              <img src="../profiles/anselm lu.jpg" alt="Anselm Lu" />
+              <img src="profiles/anselm lu.jpeg" alt="Anselm Lu" />
             </div>
             <div class="team-info">
               <h4>Anselm Lu</h4>
@@ -443,48 +581,48 @@
       <div class="impact-grid">
         <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
           <div class="impact-icon">
-            <i class="fas fa-graduation-cap"></i>
+            <i class="fas fa-users"></i>
           </div>
           <div class="impact-content">
             <div class="impact-stats">
-              <span class="stat-number" data-target="60" data-suffix="+">0</span>
-              <span class="stat-label">Children Supported</span>
+              <span class="stat-number" data-target="15" data-suffix="+">0</span>
+              <span class="stat-label">Volunteers</span>
             </div>
           </div>
         </div>
 
         <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
           <div class="impact-icon">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-graduation-cap"></i>
           </div>
           <div class="impact-content">
             <div class="impact-stats">
-              <span class="stat-number" data-target="4">0</span>
-              <span class="stat-label">Partner Organizations</span>
+              <span class="stat-number" data-target="200" data-suffix="+">0</span>
+              <span class="stat-label">Children Supported</span>
             </div>
           </div>
         </div>
 
         <div class="impact-card" data-aos="fade-up" data-aos-delay="300">
           <div class="impact-icon">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-school"></i>
           </div>
           <div class="impact-content">
             <div class="impact-stats">
               <span class="stat-number" data-target="10" data-suffix="+">0</span>
-              <span class="stat-label">Volunteers</span>
+              <span class="stat-label">Schools</span>
             </div>
           </div>
         </div>
 
         <div class="impact-card" data-aos="fade-up" data-aos-delay="400">
           <div class="impact-icon">
-            <i class="fas fa-school"></i>
+            <i class="fas fa-heart"></i>
           </div>
           <div class="impact-content">
             <div class="impact-stats">
-              <span class="stat-number" data-target="8">0</span>
-              <span class="stat-label">Schools</span>
+              <span class="stat-number" data-target="5" data-suffix="+">0</span>
+              <span class="stat-label">Partners</span>
             </div>
           </div>
         </div>
@@ -519,7 +657,7 @@
             </div>
             <div class="contact-details">
               <h4>Phone</h4>
-              <p>+60 16-850 9910 (Debre)</p>
+              <p>016-850-9910 (Debre)</p>
             </div>
           </div>
         </div>
@@ -571,8 +709,9 @@
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#programs">Programs</a></li>
-              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#partners">Partners</a></li>
               <li><a href="#team">Team</a></li>
+              <li><a href="#impact">Impact</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -580,7 +719,7 @@
             <h3 class="footer-title">Get In Touch</h3>
             <div class="footer-contact">
               <p><i class="fas fa-envelope"></i> teachyouthfirst@gmail.com</p>
-              <p><i class="fas fa-phone"></i> 60 16-850 9910 (Debre)</p>
+              <p><i class="fas fa-phone"></i> 016-850-9910 (Debre)</p>
               <p><i class="fas fa-map-marker-alt"></i> Sarawak, Malaysia</p>
             </div>
           </div>
@@ -588,7 +727,6 @@
             <h3 class="footer-title">Join Us</h3>
             <ul class="footer-links">
               <li><a href="https://forms.gle/LG1CHum1QNy9DEov6" target="_blank">Volunteer with us</a></li>
-              <li><a href="#" id="footer-donate-btn">Donate</a></li>
               <li><a href="#contact">Partner with us</a></li>
             </ul>
           </div>
@@ -599,25 +737,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Donation Modal -->
-  <div id="donation-modal"
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; overflow-y: auto;">
-    <div
-      style="position: relative; top: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 20px; border: 1px solid #ccc; max-width: 90%; width: 400px; margin-bottom: 20px;">
-      <h3>Donation Information</h3>
-      <div <p style="margin: 5px 0 0 0; font-size: 14px; color: #1f3fce;">Your donation helps us continue our mission of
-        empowering youth through education.❤️</p>
-      </div>
-      <img src="../static/example-code.png" alt="Donation"
-        style="width: 100%; max-width: 300px; height: auto; object-fit: cover; margin: 10px 0;">
-      <p><strong>Bank Transfer:</strong></p>
-      <p>Account: Teach Youth First</p>
-      <p>Number: 1234567890</p>
-      <p>Bank: RHB Bank Berhad</p>
-      <button id="close-modal-btn" style="margin-top: 10px; padding: 5px 10px;">Close</button>
-    </div>
-  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
