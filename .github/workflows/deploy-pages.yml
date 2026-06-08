@@ -32,7 +32,9 @@ jobs:
             --exclude server.js \
             --exclude package.json \
             --exclude package-lock.json \
+            --exclude scripts \
             TYF/main/ deploy/
+          touch deploy/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
